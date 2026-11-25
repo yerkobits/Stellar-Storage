@@ -1,9 +1,9 @@
 {
-  "name": "stellar-vault-client",
+  "name": "stellar-storage-client",
   "version": "0.1.0",
-  "description": "SDK y CLI para creadores y usuarios de StellarVault",
+  "description": "SDK y CLI criptográfico (AES-256-GCM + X25519) para Stellar_Storage",
   "main": "index.js",
-  "dependencies": {
-    "axios": "^1.6.8"
+  "scripts": {
+    "test": "node --test test.js"
   }
 }

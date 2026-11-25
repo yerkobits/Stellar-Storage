@@ -1,7 +1,7 @@
 {
-  "name": "stellar-vault-node",
+  "name": "stellar-storage-node",
   "version": "0.1.0",
-  "description": "Daemon P2P para nodos de almacenamiento de StellarVault",
+  "description": "Daemon P2P para nodos de almacenamiento de Stellar_Storage",
   "main": "index.js",
   "dependencies": {
     "express": "^4.19.2",

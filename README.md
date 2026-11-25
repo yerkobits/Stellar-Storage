@@ -1,8 +1,8 @@
-# StellarVault 🛡️📦
+# Stellar_Storage 🛡️📦
 
 **Capa de Almacenamiento Descentralizado y Monetizable sobre Stellar Network**
 
-StellarVault es una infraestructura de almacenamiento de archivos cifrados (papers, multimedia, recursos de alta valoración) impulsada por contratos inteligentes en **Soroban (L1 de Stellar)** y una red P2P de nodos independientes. Está diseñada específicamente para garantizar la remuneración justa a creadores y nodos validadores, desincentivando la piratería, los ataques Sybil y el spam malicioso mediante incentivos económicos directos en **XLM**.
+Stellar_Storage es una infraestructura de almacenamiento de archivos cifrados (papers, multimedia, recursos de alta valoración) impulsada por contratos inteligentes en **Soroban (L1 de Stellar)** y una red P2P de nodos independientes. Está diseñada específicamente para garantizar la remuneración justa a creadores y nodos validadores, desincentivando la piratería, los ataques Sybil y el spam malicioso mediante incentivos económicos directos en **XLM**.
 
 ---
 
@@ -73,7 +73,7 @@ Cuando un usuario solicita la descarga de un archivo, realiza una transacción u
 ## 📁 Estructura del Repositorio
 
 ```text
-StellarVault/
+Stellar_Storage/
 ├── contracts/          # Smart contracts en Rust para Soroban (L1)
 ├── node/               # Daemon P2P para los nodos de almacenamiento
 ├── client/             # SDK / CLI para creadores y usuarios finales
@@ -83,9 +83,16 @@ StellarVault/
 
 ---
 
-## 🚀 Primeros Pasos (Desarrollo)
+## 🚀 Sprint Actual (Instaward Diciembre 2026)
 
-Próximamente se añadirán las guías de instalación para levantar un nodo de almacenamiento local y desplegar los contratos en la testnet de Stellar.
+Este proyecto participa en el programa **Stellar Instaward - Stellar Chile Chapter** con un enfoque en la entrega de un **Soroban Access & Key Release Engine** en 30 días.
+
+* **Objetivo del Sprint:** Implementar un contrato inteligente Soroban que gestione el registro de activos y la liberación atómica de claves de descifrado tras la validación de pago en XLM, junto a un cliente CLI que permita cifrar y descifrar archivos usando la clave liberada.
+* **Entregables:**
+    1. Contrato `access_registry` desplegado en Testnet con funciones `register_asset`, `purchase_access` y eventos de emisión de clave.
+    2. CLI `stellar-storage encrypt <archivo>` y `stellar-storage decrypt <hash>`.
+    3. Flujo end-to-end: Cifrado → Pago XLM → Liberación de clave → Descifrado.
+    4. Documentación técnica actualizada y video demo de 3 minutos.
 
 ---
 

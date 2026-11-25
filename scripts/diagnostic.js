@@ -2,7 +2,7 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 
-console.log("=== StelarVault Diagnostic Tool ===");
+console.log("=== Stellar_Storage Diagnostic Tool ===");
 
 function checkCommand(name, cmd) {
     try {

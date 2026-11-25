@@ -1,5 +1,5 @@
 [package]
-name = "stellar_vault_contracts"
+name = "stellar_storage_contracts"
 version = "0.1.0"
 edition = "2021"
 

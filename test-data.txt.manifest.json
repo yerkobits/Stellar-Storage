@@ -1,0 +1,7 @@
+{
+  "originalFile": "test-data.txt",
+  "asset_hash": "648e25ff5ff80eaa07f27b1d5812892b7aca00c00453d6c6c6afbf1e0827f109",
+  "key_commitment": "9d95443e8846227065b04173d0bebb92585ee55ecd361aa9500001076e634757",
+  "aes_key_secret": "c1492621c897609c1d6840c601b3d795a50b23dde966252fd2d6f882508fbf64",
+  "cipher": "AES-256-GCM"
+}

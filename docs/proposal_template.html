@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stellar_Storage — Proposal for Stellar Instaward</title>
+<style>
+  @page {
+    size: A4;
+    margin: 16mm 16mm 16mm 16mm;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1a202c;
+    background: #ffffff;
+    line-height: 1.5;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    border-bottom: 2px solid #0b3954;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header-left h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0b3954;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.5px;
+  }
+  .header-left .subtitle {
+    font-size: 12px;
+    color: #4a5568;
+    font-weight: 600;
+  }
+  .badge-tag {
+    display: inline-block;
+    background: #eef2ff;
+    color: #3730a3;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid #c7d2fe;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+  }
+  .meta-item {
+    font-size: 11px;
+  }
+  .meta-item .label {
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    font-size: 9px;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .meta-item .value {
+    color: #0f172a;
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0b3954;
+    border-left: 4px solid #3b82f6;
+    padding-left: 8px;
+    margin: 16px 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  p {
+    margin: 0 0 10px 0;
+    color: #334155;
+    text-align: justify;
+  }
+  .highlight-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+    font-size: 12px;
+    color: #166534;
+  }
+  .highlight-box strong {
+    color: #14532d;
+  }
+  .diagram-container {
+    text-align: center;
+    background: #fafbfc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 12px 0 16px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 14px 0;
+    font-size: 11.5px;
+  }
+  th {
+    background: #f1f5f9;
+    color: #334155;
+    font-weight: 700;
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 2px solid #cbd5e1;
+    font-size: 10.5px;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #fcfdfe;
+  }
+  .week-badge {
+    background: #0b3954;
+    color: white;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    display: inline-block;
+  }
+  .budget-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 10px 0 14px 0;
+  }
+  .budget-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 12px;
+    border-top: 3px solid #3b82f6;
+  }
+  .budget-card .amount {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0b3954;
+  }
+  .budget-card .pct {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+  }
+  .budget-card .title {
+    font-weight: 700;
+    font-size: 12px;
+    color: #1e293b;
+    margin: 3px 0 2px 0;
+  }
+  .budget-card .desc {
+    font-size: 10.5px;
+    color: #475569;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+  .footer {
+    margin-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9.5px;
+    color: #94a3b8;
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Stellar_Storage 🛡️📦</h1>
+      <div class="subtitle">Decoupled & Monetizable Encrypted Storage Layer on Soroban (Stellar L1)</div>
+    </div>
+    <div style="text-align: right;">
+      <span class="badge-tag">Stellar Instaward Proposal</span>
+      <div style="font-size: 10px; color: #64748b; margin-top: 4px; font-weight: 600;">Chile Ambassador Chapter</div>
+    </div>
+  </div>
+
+  <!-- META GRID -->
+  <div class="meta-grid">
+    <div class="meta-item">
+      <span class="label">Applicant</span>
+      <span class="value">Yerko Pincheira (@yerkobits)</span>
+    </div>
+    <div class="meta-item">
+      <span class="label">Requested Funding</span>
+      <span class="value">$3,000 USD (in XLM)</span>
+    </div>
+    <div class="meta-item">
+      <span class="label">Sprint Duration</span>
+      <span class="value">30-Day Execution Sprint</span>
+    </div>
+    <div class="meta-item">
+      <span class="label">Target Ecosystem</span>
+      <span class="value">Soroban Testnet (L1) & P2P</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2>1. Executive Summary</h2>
+  <p>
+    <strong>Stellar_Storage</strong> is a decentralized, encrypted storage and atomic distribution infrastructure built natively on the <strong>Stellar Network</strong> using <strong>Soroban</strong> smart contracts and an independent peer-to-peer (P2P) storage daemon network.
+  </p>
+  <p>
+    Unlike conventional Web3 storage networks (Filecoin, Arweave, Sia) that introduce volatile secondary utility tokens, high latency, or complex bridging mechanisms, Stellar_Storage operates exclusively on <strong>XLM</strong>. Creators publish encrypted high-value digital assets (research papers, datasets, specialized software, and media), while storage nodes stake XLM and earn direct micro-payments in real time upon serving content blobs to verified buyers.
+  </p>
+
+  <div class="highlight-box">
+    <strong>Core Economic Innovation:</strong> 100% native XLM settlement. No speculative tokens. Sybil attacks are economically eliminated through mandatory XLM node stakes and creator publication stakes.
+  </div>
+
+  <!-- SECTION 2 & DIAGRAM -->
+  <h2>2. System Architecture & Atomic Payment Flow</h2>
+  <p>
+    The protocol integrates a hybrid model combining the speed and consensus of <strong>Soroban L1</strong> with high-throughput distributed off-chain storage.
+  </p>
+
+  <div class="diagram-container">
+    <svg width="680" height="190" viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6"/>
+        </marker>
+        <linearGradient id="boxGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#f8fafc"/>
+        </linearGradient>
+      </defs>
+
+      <!-- User Box -->
+      <rect x="20" y="55" width="130" height="75" rx="8" fill="url(#boxGrad)" stroke="#3b82f6" stroke-width="2"/>
+      <text x="85" y="85" text-anchor="middle" font-weight="700" font-size="12" fill="#0f172a">Buyer / Consumer</text>
+      <text x="85" y="103" text-anchor="middle" font-size="10" fill="#64748b">Requests File &amp; Pays</text>
+
+      <!-- Arrow 1: User to Soroban -->
+      <line x1="150" y1="92" x2="215" y2="92" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+      <text x="182" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#2563eb">XLM Tx</text>
+
+      <!-- Soroban Smart Contract Box -->
+      <rect x="220" y="25" width="220" height="135" rx="8" fill="#f0f7ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="330" y="48" text-anchor="middle" font-weight="800" font-size="12" fill="#1e3a8a">Soroban L1 Smart Contract</text>
+      <line x1="230" y1="56" x2="430" y2="56" stroke="#bfdbfe" stroke-width="1"/>
+      <text x="240" y="74" font-size="9.5" fill="#1e40af">• Verifies Node Registry &amp; Stakes</text>
+      <text x="240" y="92" font-size="9.5" fill="#1e40af">• Splits Mandatory Fee to Nodes (XLM)</text>
+      <text x="240" y="110" font-size="9.5" fill="#1e40af">• Routes Voluntary Tip to Creator (XLM)</text>
+      <text x="240" y="128" font-size="9.5" fill="#1e40af">• Emits Proof &amp; Key Event</text>
+
+      <!-- Arrow 2: Soroban to P2P Nodes -->
+      <line x1="440" y1="92" x2="505" y2="92" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+      <text x="472" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#2563eb">Proof</text>
+
+      <!-- P2P Storage Box -->
+      <rect x="510" y="30" width="150" height="125" rx="8" fill="url(#boxGrad)" stroke="#10b981" stroke-width="2"/>
+      <text x="585" y="55" text-anchor="middle" font-weight="700" font-size="12" fill="#065f46">P2P Storage Layer</text>
+      <text x="585" y="73" text-anchor="middle" font-size="9.5" fill="#047857">(Sidechain / Daemon)</text>
+      <line x1="520" y1="82" x2="650" y2="82" stroke="#a7f3d0" stroke-width="1"/>
+      <text x="525" y="100" font-size="9" fill="#065f46">• Serves Encrypted Blobs</text>
+      <text x="525" y="118" font-size="9" fill="#065f46">• Audits Single Copy (PoUC)</text>
+      <text x="525" y="136" font-size="9" fill="#065f46">• Instant XLM Revenue</text>
+    </svg>
+  </div>
+
+  <!-- SECTION 3: 30-DAY SPRINT -->
+  <h2>3. 30-Day Sprint Plan &amp; Measurable Deliverables</h2>
+  <p>
+    The requested <strong>$3,000 USD Instaward</strong> will execute a focused 30-day sprint achieving a fully demonstrable MVP deployed to the <strong>Soroban Testnet</strong>.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 12%;">Sprint Phase</th>
+        <th style="width: 25%;">Focus Area</th>
+        <th style="width: 40%;">Technical Deliverable</th>
+        <th style="width: 23%;">Verification / Success Metric</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="week-badge">Week 1</span></td>
+        <td><strong>Soroban Contracts &amp; XLM Settlements</strong></td>
+        <td>Complete `contracts/src/lib.rs` with native token balance verification (`soroban_sdk::token::Client`). Implement atomic splits for serving nodes &amp; creators.</td>
+        <td>100% test pass on Soroban local runner; deployed Contract ID on Testnet.</td>
+      </tr>
+      <tr>
+        <td><span class="week-badge">Week 2</span></td>
+        <td><strong>Client Encryption &amp; Hash Pipeline</strong></td>
+        <td>Client CLI module (`client/`) supporting client-side AES-256-GCM chunking, SHA-256 hashing, and automated publication to Soroban registry.</td>
+        <td>CLI tool `publish` successfully executes encryption and logs asset on Testnet.</td>
+      </tr>
+      <tr>
+        <td><span class="week-badge">Week 3</span></td>
+        <td><strong>P2P Node Daemon &amp; Slashing Engine</strong></td>
+        <td>P2P node daemon (`node/index.js`) with Soroban RPC listeners to verify incoming transaction payment hashes before releasing encrypted content.</td>
+        <td>Two concurrent node instances verifying transactions and serving blobs independently.</td>
+      </tr>
+      <tr>
+        <td><span class="week-badge">Week 4</span></td>
+        <td><strong>End-to-End Integration &amp; Demo Video</strong></td>
+        <td>Integration test suite covering: Publish &rarr; Distribute &rarr; Pay with XLM &rarr; Retrieve &rarr; Decrypt. Video demonstration &amp; developer tutorial.</td>
+        <td>Public 3-minute video demo and reproducible open-source walkthrough in repository.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 4: BUDGET -->
+  <h2>4. Budget Allocation ($3,000 USD in XLM)</h2>
+  <div class="budget-grid">
+    <div class="budget-card">
+      <div class="amount">$1,200 <span class="pct">(40%)</span></div>
+      <div class="title">Soroban Smart Contract Development</div>
+      <div class="desc">Rust contract logic, native XLM token client integration, stake escrows, and Testnet deployment automation scripts.</div>
+    </div>
+    <div class="budget-card">
+      <div class="amount">$1,050 <span class="pct">(35%)</span></div>
+      <div class="title">Cryptographic Pipeline &amp; P2P Node Engine</div>
+      <div class="desc">AES-256-GCM client encryption/decryption SDK, Express-based storage daemon, and payment proof validator.</div>
+    </div>
+    <div class="budget-card">
+      <div class="amount">$450 <span class="pct">(15%)</span></div>
+      <div class="title">Testbed Deployment &amp; Benchmarking</div>
+      <div class="desc">Multi-node simulation, latency benchmarking, Soroban Testnet RPC integration, and edge-case handling.</div>
+    </div>
+    <div class="budget-card">
+      <div class="amount">$300 <span class="pct">(10%)</span></div>
+      <div class="title">Documentation &amp; Community Demonstration</div>
+      <div class="desc">Open-source documentation, video walkthrough for Stellar Chile Chapter, and developer onboarding guide.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: TEAM & REPOSITORY -->
+  <h2>5. Team &amp; Open-Source Repository</h2>
+  <p>
+    <strong>Lead Developer:</strong> Yerko Pincheira — Blockchain and full-stack software engineer.<br>
+    <strong>GitHub Repository:</strong> <a href="https://github.com/yerkobits/Stellar-Storage" style="color: #2563eb; text-decoration: none; font-weight: 600;">https://github.com/yerkobits/Stellar-Storage</a><br>
+    <strong>License:</strong> MIT Open Source License.
+  </p>
+
+  <div class="footer">
+    <span>Stellar_Storage Protocol — Stellar Chile Instaward Application</span>
+    <span>November 2026 • Yerko Pincheira</span>
+  </div>
+
+</body>
+</html>

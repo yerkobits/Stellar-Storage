@@ -1,7 +1,7 @@
-# Especificación del Protocolo StellarVault
+# Especificación del Protocolo Stellar_Storage
 
 ## Resumen
-StellarVault opera enteramente sobre la red Stellar y Soroban. Todas las transacciones económicas (stakes de publicación, stakes de nodos validadores, recompensas por servicio de almacenamiento y donaciones a creadores) se liquidan de forma atómica en **XLM**.
+Stellar_Storage opera enteramente sobre la red Stellar y Soroban. Todas las transacciones económicas (stakes de publicación, stakes de nodos validadores, recompensas por servicio de almacenamiento y donaciones a creadores) se liquidan de forma atómica en **XLM**.
 
 ## Ciclo de Vida de una Descarga
 1. El usuario inicia una transacción en Soroban que especifica el `file_hash` y los nodos validadores activos.

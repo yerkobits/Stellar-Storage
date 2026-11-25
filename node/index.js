@@ -46,5 +46,5 @@ app.post('/store', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`StellarVault P2P Node ejecutándose en el puerto ${PORT}`);
+    console.log(`Stellar_Storage P2P Node ejecutándose en el puerto ${PORT}`);
 });
